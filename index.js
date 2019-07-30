@@ -256,4 +256,220 @@ function sequentialEqualSizes(val) {
 
 console.log(sequentialEqualSizes(8)); // High
 
-1:41:13
+// Comparison operators return booleans by default
+
+function isLess(a, b) {
+    return a < b; // Instead of using if a < b is true
+}
+
+
+// Returning early in a function, to leave a function
+
+function abTest(a, b) {
+    if (a < 0 || b < 0){
+        return undefined;
+    }
+    return // Add logic here
+}
+
+console.log(abTest(2, 2));
+
+
+// Card counting - black jack game function
+
+/* Rules: 
+    If low, count higher
+    If high, count lower
+    If even, 
+*/
+
+var count = 0;
+
+function cardCount(card) {
+    switch(card) {
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+        case 6:
+            count++;
+            break;   
+        case 10:
+        case "J":
+        case "Q":  
+        case "K":
+        case "A":
+            count--;
+            break;
+    }
+
+    var holdbet = 'Hold'
+    if (count > 0) {
+        holdbet = 'Bet'
+    }
+
+    return count + " " + holdbet;
+}
+
+cardCount(2); cardCount(3); cardCount(7); cardCount('K'); cardCount('A');
+console.log(cardCount(4));
+
+
+/********* OBJECTS **********/
+
+/* Similar to arrays
+    Arrays use indexes to access data
+    Objects use properties 
+*/ 
+
+var ourDog = {
+    "name": "Quincy",
+    "legs": 4,
+    "tail or tails": 1, // Use braket notation when props have spaces
+    "friends": ["sally", "daniel"]
+}
+
+// Accessing object properties two ways: Dot Notation
+
+var howManyLegs = ourDog.legs; 
+
+// Or Bracket Notation (for spaced prop names)
+
+var howManyTails = ourDog["tail or tails"];
+
+// Bracket notation can be used to access properties using variables 
+
+var howManyFriends = "friends";
+var dogFriends = ourDog[howManyFriends]; // ["sally", "daniel"]
+
+// Dot notation used to update properties
+
+ourDog.name = "ToTo"; //Replace Quincy with ToTo
+
+//Add new properties to an object: Dot or Bracket methods
+
+ourDog.bark = "bow-wow";
+ourDog['bark'] = "bow-wow";
+
+// Delete properties from object
+
+delete ourDog.bark;
+
+// Testing objects for properties 
+
+function checkObj(checkProp) {
+   if (ourDog.hasOwnProperty(checkProp)) { //has prop returns boolean
+        return ourDog[checkProp];
+   } else {
+       return "Not Found"
+   }
+}
+
+console.log(checkObj("legs")); // 4
+
+
+// Manipulating complex objects
+
+// Similar layout to JSON
+
+var myMusic = [
+    {
+        "artist": "Billy Joel",
+        "title": "Piano Man",
+        "release_year": 1973,
+        "formats": [
+            "CD",
+            "8T",
+            "LP"
+        ],
+        "gold": true
+    }, //Add comma as it's inside array, each element has comma
+    {
+        "artist": "Fleetwood Mac",
+        "title": "Tango in the Night",
+        "release_year": 1983,
+        "formats": [
+            "CD",
+            "8T",
+            "LP"
+        ],
+    }
+]
+
+// Nested objects
+
+var myStorage = {
+    "car": {
+        "inside": {
+            "glove box": "maps",
+            "passanger seat": "crumbs"
+        },
+        "outside": {
+            "trunk": "jack"
+        }
+    }
+};
+
+var gloveBoxContents = myStorage.car.inside['glove box'];
+
+console.log(gloveBoxContents); // Maps
+
+// Nested arrays 
+
+// Use index position, then property names
+
+// e.g. nestedArray[1].list[1];
+// In nestedArray, go to second array, in list property, second item
+
+
+// Coding task
+
+// Setup
+var collection = {
+    "2548": {
+      "album": "Slippery When Wet",
+      "artist": "Bon Jovi",
+      "tracks": [ 
+        "Let It Rock", 
+        "You Give Love a Bad Name" 
+      ]
+    },
+    "2468": {
+      "album": "1999",
+      "artist": "Prince",
+      "tracks": [ 
+        "1999", 
+        "Little Red Corvette" 
+      ]
+    },
+    "1245": {
+      "artist": "Robert Palmer",
+      "tracks": [ ]
+    },
+    "5439": {
+      "album": "ABBA Gold"
+    }
+};
+// Keep a copy of the collection for tests
+var collectionCopy = JSON.parse(JSON.stringify(collection)); // Way of making copy of object before changes
+
+// Only change code below this line
+function updateRecords(id, prop, value) {
+    if (value === "") {
+        delete collection[id][prop];
+    }    //Testing to delete props if empty
+    else if (prop === "tracks") {
+        collection[id][prop] = collection[id][prop] || []; // Create a new prop if doesn't exist
+        collection[id][prop].push(value);
+    }
+    else {
+        collection[id][prop] = value;
+    } 
+  
+  return collection;
+}
+
+// Alter values below to test your code
+updateRecords(5439, "artist", "ABBA");
+
+2:10:18
