@@ -472,4 +472,136 @@ function updateRecords(id, prop, value) {
 // Alter values below to test your code
 updateRecords(5439, "artist", "ABBA");
 
-2:10:18
+
+/******* LOOPS ********/
+
+//Run codes multiple times
+
+var myArray = [];
+
+var i = 0;
+while(i < 5) {
+    myArray.push(i);
+    i++;
+}
+
+console.log(myArray);
+
+//Iterating loops with FOR loops
+
+var ourArray = [];
+
+for (var i = 0; i < 5; i++) { //First initilaise, then the condition (once it's false, the loop breaks out), then increment
+    ourArray.push(i);
+}
+
+//Increment with evem numbers
+
+for (var i = 0; i < 10; i += 2) { //start at 1 for odd numbers 
+    ourArray.push(i);
+}
+
+//Count backwards
+
+for (var i = 10; i > 10; i -= 2){
+    ourArray.push(i);
+}
+
+//Iterate through contents of array with loop
+
+var myArray = [ 2, 3, 4, 5, 6 ];
+var total = 0;
+
+for (var 1 = 0; i < myArr.length; i++) {
+    total += myArr[i];
+} //Adds the total of the numbers in the array
+
+
+//Nested loops on nested array
+
+function multiplyAll(arr){
+    var product = 1;
+
+    for (var i = 0; i < arr.length; i++) { //Practice to call 1st variable i, then j for next k...etc
+        for (var j = 0; j < arr[i].length; j++) //Each element inside nested arrays
+            product *= arr[i][j];
+    }
+
+    return product;
+}
+
+var product = multiplyAll([[1,2], [3,4], [5,6,7]]);
+
+
+//DO WHILE loops
+
+/* While loops checks condition before running, 
+do while loops run the code one time, then checks to run again */
+
+var myArray = [];
+var i = 10;
+
+do {
+    myArray.push(i);
+    i++;
+} while (i < 5);
+
+
+/* CODING CHALLENGE */
+
+//Setup
+var contacts = [
+    {
+        "firstName": "Akira",
+        "lastName": "Laine",
+        "number": "0543236543",
+        "likes": ["Pizza", "Coding", "Brownie Points"]
+    },
+    {
+        "firstName": "Harry",
+        "lastName": "Potter",
+        "number": "0994372684",
+        "likes": ["Hogwarts", "Magic", "Hagrid"]
+    },
+    {
+        "firstName": "Sherlock",
+        "lastName": "Holmes",
+        "number": "0487345643",
+        "likes": ["Intriguing Cases", "Violin"]
+    },
+    {
+        "firstName": "Kristian",
+        "lastName": "Vos",
+        "number": "unknown",
+        "likes": ["JavaScript", "Gaming", "Foxes"]
+    }
+];
+
+
+function lookUpProfile(name, prop){
+   for (var i = 0; i < contacts.length; i++) {
+       if (contacts[i].firstName === name) {
+        return contacts[i][prop] || "No such property";
+       }
+   }
+   return "No such contact";
+}
+
+// Change these values to test your function
+lookUpProfile("Akira", "likes");
+
+
+//Create random decimals
+
+function randomFraction() {
+    return Math.random();
+}
+
+//Random whole numbers
+
+Math.floor(Math.random() * 20); // Get a number 0 - 19
+
+Math.floor(Math.random() * 10) // Number 0 - 9 
+
+
+//2:30:47
